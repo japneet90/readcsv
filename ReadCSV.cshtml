@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div>
+        <h1>Read CSV</h1>
+    </div>
+    <div>
+        <div>
+            <div>
+                <form asp-controller="ReadCSV" asp-action="Index" method="post"
+                      enctype="multipart/form-data">
+                    <div class="col-md-3">
+                        <input type="file" name="file" accept=".csv" />
+                        <button type="submit">Import</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+</div>
+</div>
+<script>
+    $(document).ready(function () {
+        showSuccessMessage();
+    });
+
+    function showSuccessMessage() {
+        var isSuccess = getParameterByName("success");
+        if (isSuccess == "True") {
+            //show success messsage here
+        }
+        else if (isSuccess == "False") {
+            //show error mesage here
+        }
+    }
+    function getParameterByName(name, url = window.location.href) {
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+   }
+</script>
